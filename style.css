@@ -7,15 +7,17 @@ body {
 }
 
 .container {
+    
     background-color: #F6683B;
     padding: 0 4.5em 7em;
     margin: 1em auto 0 auto;
+    border-radius: 25px;
     -webkit-filter: drop-shadow(0 1em 1em rgba(0, 0, 0, 0.1));
     filter: drop-shadow(0 1em 1em rgba(0, 0, 0, 0.1));
 }
 
 h1 {
-    border-bottom: 4px solid deepskyblue;
+    margin-top: 1.5em;
     padding-bottom: 0.25em;
     margin-bottom: 1em;
     text-align: center;
@@ -44,4 +46,22 @@ h1 {
 .temp {
     margin: 25px;
     font-size: 40pt;
+}
+
+#icon {
+    font-size: 50px;
+}
+
+#submit {
+    display: flex;
+    margin-top: 1em;
+    margin-left: 120px;
+    height: 52px;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 10px;
+}
+#submit:active {
+    background-color: #142F44;
+    color: #F6683B
 }

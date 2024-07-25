@@ -6,24 +6,43 @@ const api = {
 const input = document.getElementById('input')
 
 input.addEventListener('keypress', (event) => {
+    
     if (event.keyCode == 13) {
-        getWeather(input.value);
+        if (input.value === '') {
+            inp = document.getElementById('input')
+            inp.style.background = 'red'
+        } else {
+            getWeather(input.value);
 
-        const date = moment();
-        document.getElementById('date').innerHTML = date.format('Mo MMM YYYY dddd, h:mm:ss');
-
-        document.querySelector('.main-weather').style.display = 'block'
+            const date = moment();
+            document.getElementById('date').innerHTML = date.format('Mo MMM YYYY dddd, h:mm:ss');
+            document.querySelector('#submit').style.display = 'none'
+            document.querySelector('.main-weather').style.display = 'block'
+        }
     }
 });
 
+function submit() {
+    if (input.value === '') {
+        inp = document.getElementById('input')
+        inp.style.background = 'red'
+    } else {
+        getWeather(input.value);
+        let date = moment();
+        document.getElementById('date').innerHTML = date.format('Mo MMM YYYY dddd, h:mm:ss');
+        document.querySelector('#submit').style.display = 'none'
+        document.querySelector('.main-weather').style.display = 'block'
+    }
+};
+
 function getWeather(city) {
+    
     fetch(`${api.base}q=${city}&appid=${api.key}&units=metric`).then((details) => {
-        return details.json();
+            return details.json();
     }).then(showWeather);
 }
 
 function showWeather(details) {
-    console.log(details);
     let city = document.getElementById('city');
     city.innerHTML = `${details.name}, ${details.sys.country}`;
 
